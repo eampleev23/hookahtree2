@@ -1,31 +1,422 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hookahTree - твой Русский кальян, по лучшей цене.</title>
-    <meta http-equiv="refresh" content="1;url=catalog_retail_2024_02.pdf"/>
+    <title>hookahTree - каталог кальянов</title>
+    <meta name="description" content="Каталог hookahTree: кальяны, колбы, комплектующие и контактная информация для заказа.">
+    <meta name="keywords" content="hookahTree, купить кальян, кальяны из нержавейки, колба на резьбе, портативный кальян, beaker 2.0">
+    <style>
+        :root {
+            --ink: #4c5565;
+            --muted: #7c8490;
+            --line: #dfe3e8;
+            --paper: #f7f8fa;
+            --white: #ffffff;
+            --shadow: 0 18px 45px rgba(43, 52, 66, 0.12);
+        }
 
+        * {
+            box-sizing: border-box;
+        }
 
-    <meta name="description"
-          content="Купить качественный кальян hookahTree сделанный в России. В ассортименте есть кальяны из нержавейки, с резным деревом, портативные, колбы с резьбой и под резьбу">
+        html {
+            scroll-behavior: smooth;
+        }
 
-    <meta name="keywords"
-          content="hookahTree,купить кальян, stainless, колба на резьбе, деревянный, нержавейка, портативный, beaker 2.0">
+        body {
+            margin: 0;
+            color: var(--ink);
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at 25% 15%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0) 28rem),
+                linear-gradient(135deg, #ffffff 0%, #f2f4f7 48%, #ffffff 100%);
+        }
+
+        body::before {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            content: "";
+            opacity: 0.62;
+            background:
+                radial-gradient(ellipse at 15% 30%, rgba(225, 229, 235, 0.75) 0 11%, transparent 12%),
+                radial-gradient(ellipse at 48% 20%, rgba(225, 229, 235, 0.65) 0 13%, transparent 14%),
+                radial-gradient(ellipse at 70% 63%, rgba(225, 229, 235, 0.58) 0 16%, transparent 17%),
+                radial-gradient(ellipse at 35% 82%, rgba(225, 229, 235, 0.5) 0 12%, transparent 13%);
+            filter: blur(2px);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-bottom: 1px solid rgba(223, 227, 232, 0.85);
+            background: rgba(255, 255, 255, 0.86);
+            backdrop-filter: blur(16px);
+        }
+
+        .topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: min(1180px, calc(100% - 32px));
+            min-height: 72px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+            font-weight: 800;
+            font-size: 24px;
+            letter-spacing: 0;
+        }
+
+        .brand-mark {
+            display: grid;
+            place-items: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            color: var(--white);
+            background: var(--ink);
+            font-size: 21px;
+            line-height: 1;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .nav a {
+            padding: 10px 12px;
+            border-radius: 8px;
+        }
+
+        .nav a:hover {
+            color: var(--ink);
+            background: rgba(76, 85, 101, 0.08);
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0 18px;
+            border: 1px solid var(--ink);
+            border-radius: 8px;
+            color: var(--white);
+            background: var(--ink);
+            font-size: 15px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .button:hover {
+            background: #363e4d;
+        }
+
+        .hero {
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 72px 0 42px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 0.98fr) minmax(320px, 0.72fr);
+            align-items: center;
+            gap: 46px;
+        }
+
+        .eyebrow {
+            margin: 0 0 18px;
+            color: var(--muted);
+            font-size: 16px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 760px;
+            margin: 0;
+            color: var(--ink);
+            font-size: clamp(44px, 7vw, 92px);
+            line-height: 0.95;
+            letter-spacing: 0;
+        }
+
+        .lead {
+            max-width: 660px;
+            margin: 26px 0 0;
+            color: #69717d;
+            font-size: 21px;
+            line-height: 1.45;
+            font-weight: 700;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .button.secondary {
+            color: var(--ink);
+            background: rgba(255, 255, 255, 0.72);
+        }
+
+        .contact-panel {
+            padding: 28px;
+            border: 1px solid rgba(223, 227, 232, 0.92);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.72);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-panel h2 {
+            margin: 0 0 20px;
+            color: var(--ink);
+            font-size: 28px;
+            line-height: 1.1;
+        }
+
+        .contact-list {
+            display: grid;
+            gap: 14px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .contact-list a,
+        .contact-list span {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+            color: var(--ink);
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .contact-icon {
+            display: grid;
+            flex: 0 0 34px;
+            place-items: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            color: var(--white);
+            background: var(--ink);
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        .catalog {
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 26px 0 82px;
+        }
+
+        .section-head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section-head h2 {
+            margin: 0;
+            color: var(--ink);
+            font-size: clamp(32px, 4vw, 54px);
+            line-height: 1;
+        }
+
+        .section-head p {
+            max-width: 480px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.45;
+            font-weight: 700;
+        }
+
+        .pages {
+            display: grid;
+            gap: 22px;
+        }
+
+        .catalog-page {
+            overflow: hidden;
+            border: 1px solid rgba(223, 227, 232, 0.9);
+            border-radius: 8px;
+            background: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .catalog-page img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .footer {
+            padding: 30px 16px 42px;
+            border-top: 1px solid rgba(223, 227, 232, 0.9);
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.72);
+            text-align: center;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 860px) {
+            .topbar-inner {
+                flex-wrap: wrap;
+                padding: 12px 0;
+            }
+
+            .nav {
+                order: 3;
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 2px;
+            }
+
+            .hero {
+                padding-top: 42px;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .section-head {
+                display: block;
+            }
+
+            .section-head p {
+                margin-top: 12px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .topbar-inner,
+            .hero,
+            .catalog {
+                width: min(100% - 20px, 1180px);
+            }
+
+            .brand {
+                font-size: 20px;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+            .hero-actions {
+                display: grid;
+            }
+
+            .contact-panel {
+                padding: 20px;
+            }
+
+            .contact-list a,
+            .contact-list span {
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 <body>
-<!--    <iframe src="catalog_retail_2024_02.pdf" width="100%" height="100%" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0;" frameborder="0"></iframe>-->
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="brand" href="#top" aria-label="hookahTree">
+                <span class="brand-mark">hT</span>
+                <span>hookahTree</span>
+            </a>
+            <nav class="nav" aria-label="Разделы каталога">
+                <a href="#catalog">Каталог</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+            <a class="button" href="catalog_retail_2024_02.pdf" download>Скачать PDF</a>
+        </div>
+    </header>
+
+    <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-grid">
+                <div>
+                    <p class="eyebrow">Каталог продукции 2026</p>
+                    <h1 id="hero-title">Русские кальяны hookahTree</h1>
+                    <p class="lead">Кальяны, колбы, комплектующие и упаковка в чистом светлом каталоге по дизайну актуального PDF.</p>
+                    <div class="hero-actions">
+                        <a class="button" href="#catalog">Смотреть каталог</a>
+                        <a class="button secondary" href="tel:+79093211747">Позвонить</a>
+                    </div>
+                </div>
+
+                <aside class="contact-panel" id="contacts" aria-labelledby="contacts-title">
+                    <h2 id="contacts-title">Контактная информация</h2>
+                    <ul class="contact-list">
+                        <li><a href="https://vk.com/hookahtree" target="_blank" rel="noopener"><span class="contact-icon">VK</span><span>/hookahTree</span></a></li>
+                        <li><a href="https://instagram.com/hookahtree" target="_blank" rel="noopener"><span class="contact-icon">IG</span><span>/hookahTree</span></a></li>
+                        <li><a href="https://t.me/+79093211747"><span class="contact-icon">TG</span><span>+7-909-321-17-47</span></a></li>
+                        <li><a href="https://wa.me/79093211747"><span class="contact-icon">WA</span><span>+7-909-321-17-47</span></a></li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
+
+        <section class="catalog" id="catalog" aria-labelledby="catalog-title">
+            <div class="section-head">
+                <h2 id="catalog-title">Каталог</h2>
+                <p>Страницы перенесены из PDF в HTML, поэтому каталог открывается сразу на сайте и хорошо масштабируется на телефонах.</p>
+            </div>
+
+            <div class="pages">
+                <figure class="catalog-page"><img src="assets/catalog/page-02.jpg" alt="Beaker 2.0"></figure>
+                <figure class="catalog-page"><img src="assets/catalog/page-03.jpg" alt="The Банка"></figure>
+                <figure class="catalog-page"><img src="assets/catalog/page-04.jpg" alt="Страница каталога hookahTree 4"></figure>
+                <figure class="catalog-page"><img src="assets/catalog/page-05.jpg" alt="Страница каталога hookahTree 5"></figure>
+                <figure class="catalog-page"><img src="assets/catalog/page-06.jpg" alt="Страница каталога hookahTree 6"></figure>
+                <figure class="catalog-page"><img src="assets/catalog/page-07.jpg" alt="Страница каталога hookahTree 7"></figure>
+                <figure class="catalog-page"><img src="assets/catalog/page-08.jpg" alt="Страница каталога hookahTree 8"></figure>
+                <figure class="catalog-page"><img src="assets/catalog/page-09.jpg" alt="Страница каталога hookahTree 9"></figure>
+                <figure class="catalog-page"><img src="assets/catalog/page-10.jpg" alt="Страница каталога hookahTree 10"></figure>
+                <figure class="catalog-page"><img src="assets/catalog/page-11.jpg" alt="Страница каталога hookahTree 11"></figure>
+                <figure class="catalog-page"><img src="assets/catalog/page-12.jpg" alt="Страница каталога hookahTree 12"></figure>
+                <figure class="catalog-page"><img src="assets/catalog/page-13.jpg" alt="Страница каталога hookahTree 13"></figure>
+                <figure class="catalog-page"><img src="assets/catalog/page-14.jpg" alt="Страница каталога hookahTree 14"></figure>
+                <figure class="catalog-page"><img src="assets/catalog/page-15.jpg" alt="Страница каталога hookahTree 15"></figure>
+                <figure class="catalog-page"><img src="assets/catalog/page-01.jpg" alt="Контактная информация hookahTree"></figure>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        hookahTree · +7-909-321-17-47 · VK /hookahTree
+    </footer>
 </body>
 </html>
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>View PDF</title>-->
-<!--        <meta http-equiv="refresh" content="1;url=catalog_retail_2024_02.pdf"/>-->
-<!--</head>-->
-<!--&lt;!&ndash;<head>&ndash;&gt;-->
-<!--&lt;!&ndash;    <meta http-equiv="refresh" content="1;url=Ссыль"/>&ndash;&gt;-->
-<!--&lt;!&ndash;</head>&ndash;&gt;-->
-<!--</html>-->

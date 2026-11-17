@@ -27,8 +27,9 @@ jobs:
           set -euo pipefail
           release_dir="$RUNNER_TEMP/release"
           mkdir -p "$release_dir"
-          test -s index.html
+          python3 scripts/check_catalog.py
           rsync -a --exclude='.git' --exclude='.github' --exclude='.env*' ./ "$release_dir/"
+          python3 scripts/check_catalog.py --root "$release_dir"
           printf '{"commit":"%s"}\n' "$GITHUB_SHA" > "$release_dir/release.json"
           tar --format=ustar --dereference --owner=0 --group=0 --numeric-owner -C "$release_dir" -czf "$RUNNER_TEMP/release.tar.gz" .
 
@@ -54,20 +55,7 @@ jobs:
             "deploy-hookahtree2@$DEPLOY_HOST" "deploy $GITHUB_SHA" < "$RUNNER_TEMP/release.tar.gz"
 
       - name: Verify public production endpoints
-        env:
-          VERIFY_HOST: ${{ vars.NETCUP_HOST || '62.83.86.239' }}
         run: |
           set -euo pipefail
-          function probe() {
-            local target
-            for target in "$@"; do
-              if [[ "$target" == https://* ]]; then
-                local domain="${target#https://}"
-                domain="${domain%%/*}"
-                curl --resolve "$domain:443:$VERIFY_HOST" "$@"
-                return
-              fi
-            done
-            return 1
-          }
-          probe -fsSL --retry 3 --connect-timeout 10 --max-time 20 https://hookahtree.ru/ >/dev/null
+          python3 scripts/check_catalog.py --url https://hookahtree.ru/
+          python3 scripts/check_catalog.py --url https://www.hookahtree.ru/

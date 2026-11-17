@@ -42,6 +42,7 @@ Thumbs.db
 
 # Large media files
 *.pdf
+!catalog_retail_2024_02.pdf
 *.mp4
 *.tiff
 *.avi
